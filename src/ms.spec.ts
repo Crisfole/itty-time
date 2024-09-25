@@ -14,7 +14,6 @@ describe('ms(duration: string): number', () => {
     ['30.5 seconds', 30.5 * 1000],
     ['30.5   seconds', 30.5 * 1000],
     [4001, 4001], // a number is assumed to be a number
-    //@ts-expect-error
     ['100', 100], // string of a number is assumed to be ms
     ['100 ms', 100], // can handle ms
     //@ts-expect-error

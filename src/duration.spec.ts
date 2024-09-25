@@ -1,13 +1,14 @@
+import type { Duration } from './lib/units'
 import { describe, expect, it } from 'vitest'
 import { duration } from './duration'
 import { ms } from './ms'
 
-const BASE = '1.1 weeks'
+const BASE: Duration = '1.1 weeks'
 const EXPECTED = '1 week, 16 hours, 48 minutes'
 
 describe('duration(ms: number, options?: durationOptions)', () => {
   describe('reverse-parses ms (number) into a readable string', () => {
-    const tests = [
+    const tests: Array<{ original: Duration, parts?: number, expected: string }> = [
       { original: BASE, expected: '1 week, 16 hours, 48 minutes' },
       { original: BASE, parts: 2, expected: '1 week, 16.8 hours' },
       { original: BASE, parts: 1, expected: '1.1 weeks' },
@@ -36,7 +37,7 @@ describe('duration(ms: number, options?: durationOptions)', () => {
         expect(duration(ms(BASE))).toBe(EXPECTED)
       })
       it('will use a delimiter passed to join', () => {
-        expect(duration(ms(BASE), { join: ' --> '})).toBe('1 week --> 16 hours --> 48 minutes')
+        expect(duration(ms(BASE), { join: ' --> ' })).toBe('1 week --> 16 hours --> 48 minutes')
       })
       it('will return an array of [unit, count] if set to false', () => {
         expect(Array.isArray(duration(ms(BASE), { join: false }))).toBe(true)
@@ -48,7 +49,7 @@ describe('duration(ms: number, options?: durationOptions)', () => {
   })
 
   describe('INPUT HANDLING', () => {
-    const date = new Date
+    const date = new Date()
 
     const inputTypes = [
       { type: 'number', value: 0, returns: '' },
@@ -65,7 +66,7 @@ describe('duration(ms: number, options?: durationOptions)', () => {
     ]
 
     for (const { type, value, returns } of inputTypes) {
-      const expected = `return ${returns !== undefined ? returns || '""' : 'something' }`
+      const expected = `return ${returns !== undefined ? returns || '""' : 'something'}`
 
       it(`when receiving ${type} (e.g. ${value}), it should ${expected}`, () => {
         if (returns !== undefined) {
