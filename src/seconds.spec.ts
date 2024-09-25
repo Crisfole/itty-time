@@ -1,8 +1,9 @@
+import type { Duration } from './lib/units'
 import { describe, expect, it } from 'vitest'
 import { seconds } from './seconds'
 
 describe('seconds(duration: string): number', () => {
-  type SecondsTest = [duration: string | number, expected: number]
+  type SecondsTest = [duration: Duration | number, expected: number]
 
   const tests: SecondsTest[] = [
     ['5 seconds', 5],
