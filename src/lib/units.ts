@@ -20,4 +20,4 @@ export const units = {
 
 type Unit = keyof typeof units;
 type Units = Unit | `${Unit}s`;
-export type Duration = `${number} ${Units}`;
+export type Duration = `${number} ${Units}` | `${number}`;
