@@ -7,7 +7,7 @@ const
   month = day * 30,
   year = day * 365.25
 
-export const units: Record<string, number> = {
+export const units = {
   year,
   month,
   week,
@@ -16,4 +16,8 @@ export const units: Record<string, number> = {
   minute,
   second,
   m: 1,
-}
+} as const
+
+export type TimeUnit = keyof typeof units
+export type TimeUnitPlural = `${TimeUnit}s`
+export type TimeString = `${number} ${TimeUnit | TimeUnitPlural}`
