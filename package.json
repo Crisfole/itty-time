@@ -34,6 +34,8 @@
   },
   "scripts": {
     "dev": "vitest --coverage --reporter verbose",
+    "check": "tsc --noEmit --watch",
+    "check:specs": "tsc --noEmit --watch --project tsconfig.specs.json",
     "lint": "yarn run eslint src",
     "test": "vitest run --coverage",
     "verify": "echo 'verifying module...' && yarn build && yarn test",

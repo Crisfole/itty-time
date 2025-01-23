@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { ms } from './ms'
+import type { DurationString } from './lib/units'
 
 describe('ms(duration: string): number', () => {
-  type MsTest = [duration: string | number, expected: number]
+  type MsTest = [duration: DurationString | number, expected: number]
 
   const tests: MsTest[] = [
     ['1 minutes', 60 * 1000],
@@ -14,6 +15,7 @@ describe('ms(duration: string): number', () => {
     [4001, 4001], // a number is assumed to be a number
     ['100', 100], // string of a number is assumed to be ms
     ['100 ms', 100], // can handle ms
+    // @ts-expect-error
     ['100apple', NaN], // can handle ms
   ]
 

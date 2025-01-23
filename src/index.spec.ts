@@ -12,6 +12,7 @@ describe('itty-time', () => {
   describe('exports', () => {
     for (const exportName of expected) {
       it(exportName, () => {
+        // @ts-ignore
         expect(typeof exports[exportName]).toBe('function')
       })
     }

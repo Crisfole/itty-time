@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { datePlus } from './datePlus'
 import { ms } from './ms'
+import type { DurationString } from './lib/units'
 
 describe('datePlus(duration: string, from?: Date): Date', () => {
-  type DatePlusTest = [duration: string]
+  type DatePlusTest = [duration: DurationString]
 
   const tests: DatePlusTest[] = [
     ['5 seconds'],

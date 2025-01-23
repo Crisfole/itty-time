@@ -18,6 +18,8 @@ export const units = {
   m: 1,
 } as const
 
-export type TimeUnit = keyof typeof units
-export type TimeUnitPlural = `${TimeUnit}s`
-export type TimeString = `${number} ${TimeUnit | TimeUnitPlural}`
+export type DurationUnit = keyof typeof units
+export type DurationUnitPlural = `${DurationUnit}s`
+export type DurationString =
+  | `${number}`
+  | `${number} ${DurationUnit | DurationUnitPlural}`

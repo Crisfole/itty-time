@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { seconds } from './seconds'
+import type { DurationString } from './lib/units'
 
 describe('seconds(duration: string): number', () => {
-  type SecondsTest = [duration: string | number, expected: number]
+  type SecondsTest = [duration: DurationString | number, expected: number]
 
   const tests: SecondsTest[] = [
     ['5 seconds', 5],
@@ -13,6 +14,8 @@ describe('seconds(duration: string): number', () => {
     ['1.5 seconds', 1.5],
     ['-30 seconds', -30],
     [10000, 10],
+    // @ts-expect-error
+    ['not-a-timestring', NaN],
   ]
 
   describe('returns number of seconds', () => {
